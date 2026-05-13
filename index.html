@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kingdom-Menu</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+    <div class="ornament" data-key="established">Established 2018</div>
+    <h1 data-key="hotel-name">THE KINGDOM</h1>
+    <p class="subtitle" data-key="hero-subtitle">Exquisite Culinary Experience</p>
+</header>
+
+<nav class="tabs">
+    <button class="tab active" onclick="showSection('food', this)" data-key="tab-food">Food</button>
+    <button class="tab" onclick="showSection('drinks', this)" data-key="tab-drinks">Drinks</button>
+    <button class="tab" onclick="showSection('roomservice', this)" data-key="tab-room">Room Service</button>
+    <button class="tab" onclick="showSection('qr', this)" data-key="tab-qr">QR Code</button>
+</nav>
+
+<div class="language-switcher">
+    <button id="lang-btn" onclick="toggleLanguage()">Switch to ትግርኛ</button>
+</div>
+<main class="content">
+    <section id="food" class="section active">
+        <h2 class="section-heading" data-key="food-heading">Dinner Menu</h2>
+        <p class="section-subheading" data-key="food-subheading">Ethiopian-Inspired Fine Dining</p>
+
+        <div class="category-label" data-key="cat-signature">Signature Dishes</div>
+
+        <div class="menu-item">
+            <div class="item-image"><img src="tegabino.jpg" alt="tegabino"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-tegabino">Tegabino</h3>
+                    <span class="price"data-key="price-tegabino">250 ETB</span>
+                </div>
+                <p data-key="desc-tegabino">Slow-simmered organic chickpea flour in a traditional clay pot, infused with hand-pressed niter kibbeh and 12-spice berbere blend.</p>
+                <span class="badge" data-key="badge-chef">Chef's Pick</span>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image"><img src="beyeanetu.jpg" alt="Beyainatu"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-beyainatu">Beyainatu</h3>
+                    <span class="price"data-key="price-beyainatu">250 ETB</span>
+                </div>
+                <p data-key="desc-beyainatu">A royal kaleidoscope of vibrant vegan stews, lentils, and garden vegetables, served on our signature fermented teff injera.</p>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image"><img src="pasta.jpg" alt="pasta"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-pasta">Pasta</h3>
+                    <span class="price"data-key="price-pasta">250 ETB</span>
+                </div>
+                <p data-key="desc-pasta">Hand-crafted pasta tossed in a rich, slow-cooked plum tomato reduction with highland herbs and aged parmesan.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-image"><img src="dulet.jpg" alt="dulet"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-dulet">Dulet</h3>
+                    <span class="price"data-key="price-dulet">500 ETB</span>
+                </div>
+                <p data-key="desc-dulet">A finely minced traditional delicacy made from lean lamb, liver, and tripe, expertly sautéed with spiced butter (niter kibbeh), mitmita, and aromatic herbs for a rich, savory taste.</p>
+            </div>
+        </div>        
+        <div class="menu-item">
+            <div class="item-image"><img src="doro.jpg" alt="Doro wet"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-doro">Doro Wot</h3>
+                    <span class="price"data-key="price-doro">2000 ETB</span>
+                </div>
+                <p data-key="desc-doro">The crown jewel of Ethiopian cuisine: slow-braised chicken in a dark, velvety berbere sauce with organic boiled eggs.</p>
+            </div>
+        </div>
+      <div class="menu-item">
+            <div class="item-image"><img src="chickenroast.jpg" alt="chickenroast"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-chicken">Chicken roasted</h3>
+                    <span class="price"data-key="price-chicken">2000 ETB</span>
+                </div>
+                <p data-key="desc-chicken">Herb-crusted chicken, oven-roasted to golden perfection, served with seasonal vegetables and lemon-thyme jus.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-image"><img src="kurt.jpg" alt="kurt"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-kurt">Kurt</h3>
+                    <span class="price"data-key="price-kurt">1200 ETB</span>
+                </div>
+                <p data-key="desc-kurt">The finest selection of hand-carved raw prime beef, served with traditional Awaze and Senafich dips.</p>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image"><img src="kitfo.jpg" alt="kitfo"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-kitfo">Kitfo</h3>
+                    <span class="price" data-key="price-kitfo">950 ETB</span>
+                </div>
+                <p data-key="desc-kitfo">Finely minced prime beef, seasoned with korarima and niter kibbeh, served with ayib cheese and gomen.</p>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-image"><img src="shekla.jpg" alt="shekla"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-shekla">Shekla tibs</h3>
+                  <span class="price" data-key="price-shekla">850 ETB</span>
+                </div>
+                <p data-key="desc-shekla">Tender, slow-simmered bone-in lamb broth, seasoned with turmeric, ginger, and highland herbs for a comforting royal experience.</p>
+                <span class="badge" data-key="badge-classic">fast</span>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="item-image"><img src="kkl.jpg" alt="Kkl"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-kkl">Royal Kkl</h3>
+                    <span class="price"data-key="price-kkl">850 ETB</span>
+                </div>
+                <p data-key="desc-kkl">Tender, slow-simmered bone-in lamb broth, seasoned with turmeric, ginger, and highland herbs for a comforting royal experience.</p>
+                <span class="badge" data-key="badge-classic">Classic</span>
+            </div>
+        </div>
+    <div class="menu-item special-item">
+      <div class="item-details">
+        <span class="badge" data-key="badge-special">Special</span>
+        <h3 data-key="item-special">Special Tihlo with Mes (Tej)</h3>
+        <p class="description" data-key="desc-special">
+          Premium Agame Tihlo served with savory lamb stew (Zilzil), perfectly paired with a glass of authentic homemade Honey Wine (Mes).</p>
+        <span class="price" data-key="price-special">950 ETB</span>
+       </div>
+        <div class="item-image">
+        <img src="thlo.jpg" alt="Special Combo">
+       <img src="tej.jpg" alt="tej">
+    </div>
+     </div>
+
+    </section>
+    <section id="drinks" class="section">
+        <h2 class="section-heading" data-key="drinks-heading">Cocktails & Wine</h2>
+        <p class="section-subheading" data-key="drinks-subheading">Crafted & Curated</p>
+        <div class="category-label" data-key="cat-drinks">Signature Cocktails</div>
+        
+        <div class="menu-item">
+            <div class="item-image"><img src="Ambo.jpg" alt="Ambo water"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-ambo">Ambo Water</h3>
+                    <span class="price" data-key="price-ambo">150 ETB</span>
+                </div>
+                <p data-key="desc-ambo">Natural sparkling water sourced from the springs, refreshing and revitalizing.</p>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image"><img src="coco.jpg" alt="coco-cola"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-coca">Coca-Cola</h3>
+                    <span class="price" data-key="price-cocka">100 ETB</span>
+                </div>
+                <p data-key="desc-coca">The classic world-favorite sparkling soda, perfect for any meal.</p>
+            </div>
+        </div>
+         <div class="menu-item">
+            <div class="item-image"><img src="pepsi.jpg" alt="pepsi"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-pepsi">Pepsi</h3>
+                    <span class="price" data-key="price-pepsi">100 ETB</span>
+                </div>
+                <p data-key="desc-pepsi">A bold and refreshing cola flavor that keeps you energized and cool.</p>
+            </div>
+        </div>
+     <div class="menu-item">
+            <div class="item-image"><img src="mirnda.jpg" alt="Mirinda"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-mirinda">Mirinda</h3>
+                    <span class="price" data-key="price-mirinda">100 ETB</span>
+                </div>
+                <p data-key="desc-mirinda">A vibrant orange-flavored soda that brings a burst of citrus freshness.</p>
+            </div>
+        </div>
+    <div class="menu-item">
+       <div class="item-image"><img src="water.jpg" alt="water"></div>
+         <div class="item-info">
+            <div class="item-header">
+                    <h3 data-key="item-water">Water</h3>
+                    <span class="price" data-key="price-water">100 ETB</span>
+                </div>
+                <p data-key="desc-water">Pure, filtered premium water to keep you hydrated and refreshed.</p>
+          </div>
+       </div>
+     <div class="menu-item">
+      <div class="item-image"><img src="coffee.jpg" alt="coffee"></div>
+            <div class="item-info">
+                <div class="item-header">
+                    <h3 data-key="item-coffee">coffee</h3>
+                    <span class="price" data-key="price-coffee">60 ETB</span>
+                </div>
+                <p data-key="desc-coffee">Authentic Ethiopian coffee ceremony experience, freshly roasted and brewed in a traditional Jebena.</p>
+            </div>
+        </div>
+    </section>
+        <section id="roomservice" class="section">
+        <h2 class="section-heading" data-key="tab-room">Room Service</h2>
+        <p class="section-subheading" data-key="room-available">Available 24 Hours</p>
+        <p class="room-service-note"><span data-key="dial-text">Dial</span> <span>+251911848120</span> <span data-key="order-text">from your room to order.</span></p>
+    </section>
+
+    <section id="qr" class="section">
+        <div class="qr-section">
+            <h2 class="section-heading">KINGDOM Hotel</h2>
+            <div class="qr-card"><div id="qr-code"></div></div>
+            <p class="qr-note" data-key="qr-scan">Scan to view on your device</p>
+            <button onclick="downloadQR()" style="margin-top:10px; cursor:pointer;" data-key="qr-download">Download QR Code</button>
+        </div>
+    </section>
+</main>
+<footer class="footer" data-key="footer-text">
+    The Kingdom Hotel · Fine Dining · Established 2018
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
