@@ -56,7 +56,7 @@ const translations = {
         'desc-kkl': 'Tender, slow-simmered bone-in lamb broth, seasoned with turmeric, ginger, and highland herbs for a comforting royal experience.',
         // Special Tihlo
         'item-special': 'Special Tihlo with Mes (Tej)',
-        'price-special': '450 ETB',
+        'price-special': '950 ETB',
         'desc-special': 'Premium Agame Tihlo served with savory lamb stew (Zilzil), perfectly paired with a glass of authentic homemade Honey Wine (Mes).',
         // Drinks
         'drinks-heading': 'Cocktails & Wine',
@@ -146,7 +146,7 @@ const translations = {
         'desc-kkl': 'ብሰንደል፡ ዝንጅብልን ዝተፈላለዩ ናይ ከበሳ ቅመማትን ብዝግባእ ዝበሰለ ናይ በጊዕ ስጋ ቅቅል።',
         // ጥሕሎ
         'item-special':'ፍሉይ ጥሕሎ ምስ ሜስ',      
-        'price-special': '450 ብር ',
+        'price-special': '950 ብር ',
         'desc-special': 'ብሉጽ ናይ ዓጋመ ጥሕሎ ምስ መቐረት ዘለዎ ዝልዝል ስጋ፡ ምስ ሓደ ብርለ ጽሩይ ናይ ገዛ ሜስ ተደሚሩ።',
         // መስተ
         'drinks-heading': 'መስተታት',
