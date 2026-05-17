@@ -1,12 +1,11 @@
-/* 1. Global Reset & Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap');
 
 :root {
-    --primary-color: #c9a84c; /* ወርቃማ */
-    --bg-color: #0a0a0a;      /* ጸሊም */
-    --text-gold: #f1d37e;     /* ፍኹስ ዝበለ ወርቃማ */
-    --text-muted: #b0a080;    /* ደሚቅ ክሬም */
-    --accent-dark: #111111;   /* ንታብስ ዝኸውን */
+    --primary-color: #c9a84c; 
+    --bg-color: #0a0a0a;      
+    --text-gold: #f1d37e;     
+    --text-muted: #b0a080;    
+    --accent-dark: #111111;   
 }
 
 * { 
@@ -16,31 +15,45 @@
 }
 
 body {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
     background-color: var(--bg-color);
     color: var(--text-gold);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* 2. Language Switcher */
-.language-switcher {
-    text-align: right;
-    padding: 15px 25px;
-    background: var(--bg-color);
+/* --- Controls Navigation (Left & Right) --- */
+.controls-container {
+    display: flex !important; 
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    max-width: 850px; 
+    margin: 25px auto 10px; 
+    padding: 0 20px; 
+    box-sizing: border-box;
+    z-index: 10;
+    position: relative;
+}
+
+#lang-btn, .currency-switcher {
+    flex: 1;
+    max-width: 48%; 
 }
 
 #lang-btn {
     background: transparent;
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
-    padding: 6px 18px;
+    padding: 10px;
     border-radius: 20px;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
 }
 
 #lang-btn:hover {
@@ -48,10 +61,91 @@ body {
     color: #000;
 }
 
-/* 3. Hero Section */
+/* --- Custom Currency Dropdown Styles --- */
+.currency-switcher {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.custom-select-trigger {
+    background: #111111;
+    color: var(--text-gold);
+    border: 1px solid #332b16;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.custom-select-trigger:hover {
+    border-color: var(--primary-color);
+}
+
+.custom-select-trigger .arrow {
+    font-size: 10px;
+    color: var(--primary-color);
+    transition: 0.3s;
+}
+
+.custom-options-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: #111111;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+    z-index: 1005;
+    width: 100%;
+    overflow: hidden;
+}
+
+.custom-options-menu.open {
+    display: block;
+    animation: fadeInDropdown 0.2s ease-out;
+}
+
+@keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.option-item {
+    padding: 10px 15px;
+    color: #ffffff;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.option-item:last-child {
+    border-bottom: none;
+}
+
+.option-item:hover {
+    background: rgba(201, 168, 76, 0.1);
+    color: var(--text-gold);
+}
+
+.option-item.active {
+    background: var(--primary-color);
+    color: #000000;
+    font-weight: bold;
+}
+
+/* --- Hero Section --- */
 .hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
     background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://www.transparenttextures.com/patterns/black-paper.png');
     border-bottom: 3px double var(--primary-color);
 }
@@ -68,64 +162,126 @@ body {
 
 .hero h1 {
     font-family: 'Cinzel', serif;
-    font-size: clamp(40px, 8vw, 70px);
+    font-size: clamp(36px, 6vw, 65px);
     font-weight: 700;
     letter-spacing: 5px;
     color: var(--text-gold);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
 }
 
-/* 4. Navigation Tabs */
-.tabs {
+.hero p {
+    font-size: clamp(14px, 3vw, 18px);
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   🎯 ሓድሽ መዋቕር ናቪጌሽን (NAVIGATION FIXED)
+   ========================================== */
+.navigation-wrapper {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto 20px auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* ዓበይቲ ታባት (Food, Drinks, Room Service) */
+.main-tabs {
     display: flex;
     justify-content: center;
-    background: var(--accent-dark);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    gap: 10px;
     border-bottom: 1px solid #332b16;
+    background: var(--accent-dark);
     padding: 5px 0;
+    border-radius: 4px;
 }
 
-.tab {
+.main-tabs .tab {
     background: none;
     border: none;
     color: #888;
-    padding: 15px 25px;
+    padding: 12px 20px;
     cursor: pointer;
     font-family: 'Cinzel', serif;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: 0.4s;
+    transition: 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
-.tab:hover {
+.main-tabs .tab:hover, .main-tabs .tab.active {
     color: var(--text-gold);
 }
 
-.tab.active {
-    color: var(--text-gold);
-    border-bottom: 3px solid var(--primary-color);
-    background: rgba(201, 168, 76, 0.05);
+.main-tabs .tab.active {
+    border-bottom: 2px solid var(--primary-color);
 }
 
-/* 5. Menu Sections */
+/* ንኣሽቱ ታባት (Breakfast, Lunch, Dinner...) */
+.sub-tabs-container {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.sub-tabs-group {
+    display: none; /* ብኣውቶማቲክ ሕቡእ እዩ */
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.sub-tabs-group.active {
+    display: flex !important; /* ምስ ተመርጸ ጥራሕ ይኽፈት */
+}
+
+.sub-tabs-group .sub-tab {
+    background: #111111;
+    border: 1px solid #332b16;
+    color: #999;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.sub-tabs-group .sub-tab:hover, .sub-tabs-group .sub-tab.active {
+    color: var(--text-gold);
+    border-color: var(--primary-color);
+    background: rgba(201, 168, 76, 0.1);
+}
+
+.sub-tabs-group .sub-tab.active {
+    background: var(--primary-color);
+    color: #000000;
+    font-weight: bold;
+}
+
+/* --- Menu Sections Styling --- */
 .section {
     display: none;
-    padding: 40px 20px;
-    max-width: 850px;
-    margin: 0 auto;
+    padding: 10px 20px 30px;
+    width: 100%;
+    max-width: 850px; 
+    margin: 0 auto;   
 }
 
-.section.active {
+.section.active, .sub-section.active {
     display: block;
-    animation: fadeIn 0.8s ease-in;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.sub-section {
+    display: none;
 }
 
 .category-label {
@@ -133,7 +289,7 @@ body {
     text-align: center;
     font-size: 22px;
     color: var(--primary-color);
-    margin: 40px 0 30px;
+    margin: 25px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,7 +305,7 @@ body {
     opacity: 0.5;
 }
 
-/* 6. Menu Items */
+/* --- Menu Items Component --- */
 .menu-item {
     margin-bottom: 30px;
     padding-bottom: 20px;
@@ -159,8 +315,9 @@ body {
 .item-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
+    align-items: center; 
+    gap: 30px;
+    width: 100%;
 }
 
 .item-info {
@@ -184,13 +341,14 @@ body {
     font-weight: bold;
     color: var(--primary-color);
     font-size: 18px;
+    white-space: nowrap;
 }
 
 .item-desc {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: var(--text-muted);
-    font-style:italic;
+    font-style: italic;
     font-weight: 300;
 }
 
@@ -203,30 +361,25 @@ body {
     border-radius: 2px;
     font-weight: bold;
     text-transform: uppercase;
-}
-.special-item {
-    border: 2px solid #c9a84c; /* ወርቃማ ሕብሪ ንምሃብ */
-    background: rgba(201, 168, 76, 0.05); /* ንእሽቶ ጽላሎት ሕብሪ */
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.badge {
-    background-color: #c9a84c;
-    color: white;
-    padding: 2px 8px;
-    font-size: 10px;
-    border-radius: 4px;
-    text-transform: uppercase;
     display: inline-block;
-    margin-bottom: 5px;
 }
 
-/* 7. Images */
+.special-item {
+    border: 2px solid #c9a84c; 
+    background: rgba(201, 168, 76, 0.05); 
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.item-image {
+    display: flex;
+    gap: 12px;
+}
+
 .item-image img {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     object-fit: cover;
     border: 1px solid var(--primary-color);
     padding: 3px;
@@ -238,27 +391,13 @@ body {
     transform: scale(1.05);
 }
 
-/* 8. QR Section - ዝተስተካከለ */
-.qr-section {
+.room-service-note {
     text-align: center;
-    padding: 60px 20px; /* ካብ ላዕሊ ዝያዳ ክፍተት ንክህልዎ */
-    clear: both;        /* ዝኾነ ተደራቢ ነገር ንከይመጽእ */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
-.qr-card {
-    background:white;
-    padding: 20px;
-    display: inline-block;
-    border-radius: 8px;
-    border: 4px double #332b16;
-    margin-bottom: 20px; /* ኣብ መንጎ QRን ፉተርን ክፍተት ንክህሉ */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* ንክጉልህ */
-}
-
-/* 9. Footer */
+/* --- Footer --- */
 .footer {
     text-align: center;
     padding: 60px 20px;
@@ -270,37 +409,229 @@ body {
     border-top: 3px double var(--primary-color);
 }
 
-/* 10. Responsive Design */
-@media (max-width: 600px)  {
-    .menu-item {
-        margin-bottom: 40px;
-        padding-bottom: 30px;
+/* --- Local Images Layout --- */
+.payment-methods {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.payment-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.local-logo-box {
+    background: #111111;
+    border: 1px solid #332b16;
+    padding: 8px 16px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.local-logo-box:hover {
+    border-color: var(--primary-color);
+    background: rgba(201, 168, 76, 0.05);
+}
+
+.local-logo-box img {
+    height: 25px; 
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* --- Payment Account Dropdown Styles --- */
+.payment-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pay-dropdown {
+    display: none;
+    position: absolute;
+    top: 110%;
+    background: #161616;
+    border: 1px solid var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 10;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.pay-dropdown.show {
+    display: flex;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.acc-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.copy-btn {
+    background: var(--primary-color);
+    color: #000000;
+    border: none;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--text-gold);
+}
+
+/* --- Search Bar Styling --- */
+.search-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+#menu-search {
+    width: 100%;
+    background: #111111;
+    border: 1px solid #332b16;
+    color: var(--text-gold);
+    padding: 12px 15px 12px 40px; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    border-radius: 30px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+#menu-search:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.2);
+    background: #161616;
+}
+
+#menu-search::placeholder {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE LAYOUT (< 600px)
+   ========================================== */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 35px;
     }
-    
-    .item-image img {
-        width: 100%;
-        height: 200px; /* ቁሩብ ዓቢ ክኸውን */
-        margin-bottom: 15px;
-        display: block; /* ንጽል ንክኸውን */
+
+    .main-tabs {
+        justify-content: space-between;
+        padding: 5px 8px;
+    }
+
+    .main-tabs .tab {
+        padding: 10px 8px;
+        font-size: 11px;
+        letter-spacing: 1px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .sub-tabs-group .sub-tab {
+        font-size: 11px;
+        padding: 6px 14px;
     }
 
     .item-content {
         flex-direction: column-reverse;
         align-items: stretch;
+        gap: 15px;
     }
     
     .item-image img {
         width: 100%;
         height: 180px;
-        margin-bottom: 15px;
     }
 
-    .hero h1 {
-        font-size: 35px;
+    .special-item .item-image {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
     }
-    
-    .tab {
-        padding: 12px 10px;
-        font-size: 10px;
+
+    .special-item .item-image img {
+        width: 50% !important;
+        height: 130px !important;
+    }
+}
+
+/* ==========================================
+   DESKTOP RESPONSIVE LAYOUT (> 768px)
+   ========================================== */
+@media screen and (min-width: 768px) {
+    .main-tabs {
+        gap: 40px;
+    }
+
+    .main-tabs .tab {
+        font-size: 14px;
+        padding: 12px 25px;
+    }
+
+    .sub-tabs-group {
+        gap: 15px;
+    }
+
+    .sub-tabs-group .sub-tab {
+        font-size: 13px;
+        padding: 8px 22px;
+    }
+
+    .item-content {
+        flex-direction: row !important;
+        align-items: center !important;
+    }
+
+    .item-image img {
+        width: 110px !important;
+        height: 110px !important;
+    }
+
+    .special-item .item-image img {
+        width: 110px !important;
+        height: 110px !important;
     }
 }
